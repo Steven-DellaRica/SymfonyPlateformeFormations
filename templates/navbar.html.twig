@@ -1,0 +1,32 @@
+{% block header %}
+	<nav>
+		<div class="navbar-container">
+			<div class="navbar-left">
+				<img class="navbar-logo" src="{{asset('images/adrar-classrooms-logo.png')}}" alt="Accueil Adrar"/>
+				<img class="navbar-name-logo" src="{{asset('images/classrooms-text.png')}}" alt="Accueil Adrar"/>
+			</div>
+
+			<div class="navbar-center">
+				<a class="current-page" href='#'>Accueil</a>
+				<a href='#'>Formations</a>
+				<a href='#'>Administration</a>
+			</div>
+
+			<div class="navbar-right">
+				<form action="">
+					<div class="form">
+						<span class="icon">
+							<img class="fas" src="{{asset('images/magnifying-glass-solid.png')}}"/>
+							<img class="fas2" src="{{asset('images/Vector.png')}}"/>
+						</span>
+						<div class="form-group">
+							<input type="text" class="search-input" placeholder="Type to search">
+							<button type="submit" class="navbar-search"><img src="{{asset('images/magnifying-glass-solid.png')}}"/></button>
+						</div>
+					</div>
+				</form>
+				<button class="navbar-connect">Se connecter</button>
+			</div>
+		</div>
+	</nav>
+{% endblock %}

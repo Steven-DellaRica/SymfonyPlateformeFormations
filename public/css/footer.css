@@ -1,0 +1,30 @@
+.footer-container {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    background-color: black;
+    color: white;
+    height: 260px;
+    font-size: 25px;
+    font-style: normal;
+    font-weight: 400;
+}
+
+#top-button {
+    display: none;
+    position: fixed;
+    bottom: 50px;
+    right: center;
+    z-index: 99;
+    border: none;
+    outline: none;
+    background-color: black;
+    cursor: pointer;
+    padding: 20px;
+    border-radius: 10px;
+}
+
+#top-button:hover {
+    background-color: #555;
+}

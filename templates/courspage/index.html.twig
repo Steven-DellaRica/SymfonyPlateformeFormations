@@ -1,0 +1,39 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Cours
+{% endblock %}
+
+{% block style_add %}
+	<link rel="stylesheet" href="{{asset('css/navbar.css')}}">
+	<link rel="stylesheet" href="{{asset('css/footer.css')}}">
+	<link rel="stylesheet" href="{{asset('css/courspage.css')}}">
+{% endblock %}
+
+{% block header %}
+	{% include 'navbar.html.twig' %}
+{% endblock %}
+
+{% block body %}
+	<div class="cours-section">
+        <div class="cours-content">
+		<h1>Cours :</h1>
+		<select name="langages" id="langage-select">
+			<option value="">Langages</option>
+			<option value="HTML">HTML</option>
+			<option value="CSS">CSS</option>
+			<option value="JS">JavaScript</option>
+			<option value="reactjs">REACT.js</option>
+			<option value="php">PHP</option>
+			<option value="symfony">Symfony</option>
+		</select>
+
+        {% block courscard %}
+            {% include 'courscard.html.twig' %}
+        {% endblock %}
+        </div>
+	</div>
+{% endblock %}
+
+{% block footer %}
+	{% include 'footer.html.twig' %}
+{% endblock %}

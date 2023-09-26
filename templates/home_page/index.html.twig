@@ -1,0 +1,72 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Home page
+{% endblock %}
+
+{% block style_add %}
+	<link rel="stylesheet" href="{{asset('css/navbar.css')}}">
+	<link rel="stylesheet" href="{{asset('css/footer.css')}}">
+	<link rel="stylesheet" href="{{asset('css/homepage/homepage.css')}}">
+{% endblock %}
+
+{% block header %}
+	{% include 'navbar.html.twig' %}
+{% endblock %}
+
+{% block body %}
+	<div class="banner-div">
+		<div class="text-div">
+			<h1>
+				Votre métier de demain, à portée de main
+			</h1>
+			<p>
+				Développez de nouvelles compétences dans le domaine de l’informatique et intégrer la formation de votre choix.
+			</p>
+			<div class="button-div">
+				<button class="candidature-button">Démarrer ma candidature</button>
+				<button class="formation-button">Découvrir les formations</button>
+			</div>
+		</div>
+
+		<div class="picture-div">
+			<img class="picture-banner" src="{{asset('images/undraw_studying_re_deca.png')}}"/>
+		</div>
+	</div>
+
+	<div class="second-banner-div">
+		<div class="card-div">
+			<img class="card-picture" src="{{asset('images/Ellipse_1.png')}}"/>
+			<h4>Diplômes certifiants</h4>
+			<p>Nos parcours procurent des titres reconnus par l'État</p>
+		</div>
+		<div class="card-div">
+			<img class="card-picture" src="{{asset('images/Ellipse_2.png')}}"/>
+			<h4>Mentor</h4>
+			<p>Un expert du secteur vous suit de manière régulière</p>
+		</div>
+		<div class="card-div">
+			<img class="card-picture" src="{{asset('images/Ellipse_3.png')}}"/>
+			<h4>Remboursé si non embauché</h4>
+			<p>L'intégrité du coût de la formation est remboursé, promis ...</p>
+		</div>
+	</div>
+	<div class="third-banner-div">
+		<h3>Témoignages et sourires</h3>
+		<img class="student-picture" src="{{asset('images/Ellipse_4.png')}}"/>
+		<h4>Jean-Louis</h4>
+		<p>"Franchement, c'était cool"</p>
+		<div class="third-banner-button-div">
+			<button class="slide-to-left-button"><img class="slide-to-left-image" src="{{asset('images/circle-chevron-down-solid.png')}}"/></button>
+			<button class="slide-to-right-button"><img class="slide-to-left-image" src="{{asset('images/circle-chevron-down-solid_2.png')}}"/></button>
+		</div>
+	</div>
+{% endblock %}
+
+{% block javascripts %}
+	<script type="text/javascript" src="{{asset('javascript/top_button.js')}}"></script>
+	<script type="text/javascript" src="{{asset('javascript/searchbar.js')}}"></script>
+{% endblock %}
+
+{% block footer %}
+	{% include 'footer.html.twig' %}
+{% endblock %}

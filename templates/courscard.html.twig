@@ -1,0 +1,22 @@
+{% block courscard %}
+	<div>
+		<div class="courscard-container">
+			<img class="courscard-picture" src="{{asset('images/green-rectangle.png')}}"/>
+			<div class="courscard-text">
+				<h3>Cours</h3>
+				<h4>Titre</h4>
+				<div class="courscard-text-mid">
+					<div class="courscard-text-icon">
+						<img src="{{asset('images/signal-solid.png')}}"/>
+						<p>Niveau</p>
+					</div>
+					<div class="courscard-text-icon">
+						<img src="{{asset('images/clock-regular.png')}}"/>
+						<p>Temps</p>
+					</div>
+				</div>
+                <p>Synopsis</p>
+			</div>
+		</div>
+	</div>
+{% endblock %}
