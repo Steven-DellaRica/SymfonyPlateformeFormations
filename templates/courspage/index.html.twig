@@ -36,7 +36,28 @@
 
 {% block javascripts %}
 	<script type="text/javascript" src="{{asset('javascript/top_button.js')}}"></script>
-	<script type="text/javascript" src="{{asset('javascript/searchbar.js')}}"></script>
+		<script type="text/javascript">
+		const toggle = document.querySelector('.form .icon');
+        const fromWrapper = document.querySelector('.form');
+
+        toggle.addEventListener('click', function () {
+            const icon = document.getElementsByClassName('fas');
+            const form = document.getElementsByClassName('form');
+            
+            this.classList.toggle = ('active');
+            fromWrapper.classList.toggle('active');
+
+            console.log(icon);
+
+            if (form[0].classList.contains('active')) {
+                console.log('Croix');
+                icon[0].src= "{{asset('images/Vector.png')}}";
+            } else {
+                console.log('Loupe');
+                icon[0].src= "{{asset('images/magnifying-glass-solid.png')}}";
+            }
+        })
+	</script>
 {% endblock %}
 
 {% block footer %}
