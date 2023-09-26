@@ -34,6 +34,11 @@
 	</div>
 {% endblock %}
 
+{% block javascripts %}
+	<script type="text/javascript" src="{{asset('javascript/top_button.js')}}"></script>
+	<script type="text/javascript" src="{{asset('javascript/searchbar.js')}}"></script>
+{% endblock %}
+
 {% block footer %}
 	{% include 'footer.html.twig' %}
 {% endblock %}
