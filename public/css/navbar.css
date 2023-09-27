@@ -24,13 +24,14 @@
 }
 
 .form {
-    max-width: 50px;
+    max-width: 40px;
     overflow: hidden;
     box-sizing: content-box;
     padding: 6px;
     box-shadow: 8px 8px 16px rgba(0, 0, 0, .2);
     border-radius: 40px;
     display: flex;
+    align-items: center;
     transition: .5s ease;
 }
 .form.active {
@@ -43,10 +44,8 @@
 
 .fas{
     visibility: visible;
-}
-
-.fas2{
-    visibility: hidden;
+    width: 30px;
+    height: auto;
 }
 
 .form-group{

@@ -1,0 +1,78 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Page du cours
+{% endblock %}
+
+{% block style_add %}
+	<link rel="stylesheet" href="{{asset('css/navbar.css')}}">
+	<link rel="stylesheet" href="{{asset('css/footer.css')}}">
+	<link rel="stylesheet" href="{{asset('css/pagecours.css')}}">
+{% endblock %}
+
+{% block header %}
+	{% include 'navbar.html.twig' %}
+{% endblock %}
+
+{% block body %}
+	<section>
+		<div class="cours-header">
+			<h1>Titre du cours</h1>
+			<div class="cours-header-spec">
+				<div class="cours-header-spec-bis">
+					<img src="{{asset('images/signal-solid.png')}}"/>
+					<p>Niveau</p>
+					<img src="{{asset('images/clock-regular.png')}}"/>
+					<p>Temps</p>
+				</div>
+				<div>
+					<p>Date de publication/mise à jour</p>
+				</div>
+			</div>
+		</div>
+		<div class="cours-content">
+			<div class="cours-progress-bar"></div>
+			<div class="cours-text">
+				<h3>Titre du chapitre</h3>
+				<p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Proin id viverra lacus. Pellentesque vitae elit pharetra, aliquet nibh non, varius sapien. Nullam ac purus a metus laoreet scelerisque. Fusce ullamcorper ornare ligula, vitae bibendum felis auctor nec. Donec vestibulum, lorem eu venenatis egestas, nulla libero maximus risus, eget sollicitudin felis arcu eu erat. Aliquam erat volutpat. Fusce ac lorem sed leo elementum placerat. Fusce feugiat, elit eget ornare fringilla, nisl mi sodales risus, sed volutpat nibh elit eget nunc. Sed sed metus dictum, rhoncus ipsum vulputate, tempus nisl. 
+																													Donec pulvinar aliquam turpis ac varius. Donec posuere quis augue non interdum. Maecenas vehicula sapien nulla, placerat congue tortor consequat et. Proin tincidunt quam ac eleifend rutrum. Donec vel aliquet ligula, ac interdum purus. Nam sem tellus, accumsan nec vehicula at, feugiat vitae orci. Quisque porttitor nunc nisl, in ultricies velit condimentum ac.</p>
+			</div>
+			<div class="cours-content-button">
+				<button class="cours-bouton-valitation">Je valide ce chapitre et je passe au suivant</button>
+				<div>
+					<button class="cours-bouton-chapitre">Passer au chapitre précédent</button>
+					<button class="cours-bouton-chapitre">Passer au chapitre suivant</button>
+				</div>
+			</div>
+		</div>
+	</section>
+{% endblock %}
+
+{% block javascripts %}
+	<script type="text/javascript" src="{{asset('javascript/top_button.js')}}"></script>
+	<script type="text/javascript">
+		const toggle = document.querySelector('.form .icon');
+        const fromWrapper = document.querySelector('.form');
+
+        toggle.addEventListener('click', function () {
+            const icon = document.getElementsByClassName('fas');
+            const form = document.getElementsByClassName('form');
+            
+            this.classList.toggle = ('active');
+            fromWrapper.classList.toggle('active');
+
+            console.log(icon);
+
+            if (form[0].classList.contains('active')) {
+                console.log('Croix');
+                icon[0].src= "{{asset('images/Vector.png')}}";
+            } else {
+                console.log('Loupe');
+                icon[0].src= "{{asset('images/magnifying-glass-solid.png')}}";
+            }
+        })
+	</script>
+{% endblock %}
+
+{% block footer %}
+	{% include 'footer.html.twig' %}
+{% endblock %}

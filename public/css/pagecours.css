@@ -1,0 +1,78 @@
+.cours-header {
+    background-color: rgba(85, 132, 172, 0.7);
+    padding-top: 3em;
+    padding-left: 5em;
+    padding-right: 5em;
+    padding-bottom: 3em;
+}
+
+.cours-header h1 {
+    margin-bottom: 2em;
+    color: black;
+    font-size: 36px;
+    font-weight: 700;
+}
+
+.cours-header-spec {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+}
+
+.cours-header-spec-bis {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+}
+
+.cours-header-spec-bis img {
+    margin-right: 0.3em;
+}
+
+.cours-header-spec-bis p {
+    margin-right: 1em;
+    font-size: 18px;
+}
+
+.cours-content {
+    padding-top: 3em;
+    padding-left: 5em;
+    padding-right: 5em;
+    padding-bottom: 3em;
+}
+
+.cours-content h3{
+    font-size: 36px;
+    font-weight: 700;
+    margin-bottom: 1.5em;
+}
+
+.cours-content-button {
+    text-align: center;
+    margin-top: 3em;
+}
+.cours-bouton-valitation{
+    background-color: #5584AC;
+    border: none;
+    border-radius: 15px;
+    padding: .7em;
+    padding-left: 1.2em;
+    padding-right: 1.2em;
+    color: white;
+    font-size: 18px;
+    font-weight: 600;
+    cursor: pointer;
+}
+.cours-bouton-chapitre{
+    margin: 0.5em;
+    background-color: white;
+    border: 2px solid #5584AC;
+    border-radius: 15px;
+    padding: .7em;
+    padding-left: 1.2em;
+    padding-right: 1.2em;
+    color: #5584AC;
+    font-size: 18px;
+    font-weight: 600;
+    cursor: pointer;
+}
