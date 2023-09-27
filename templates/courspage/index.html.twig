@@ -36,7 +36,8 @@
 
 {% block javascripts %}
 	<script type="text/javascript" src="{{asset('javascript/top_button.js')}}"></script>
-		<script type="text/javascript">
+
+	<script type="text/javascript">
 		const toggle = document.querySelector('.form .icon');
         const fromWrapper = document.querySelector('.form');
 
@@ -57,7 +58,7 @@
                 icon[0].src= "{{asset('images/magnifying-glass-solid.png')}}";
             }
         })
-	</script>
+</script>
 {% endblock %}
 
 {% block footer %}
