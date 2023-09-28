@@ -1,0 +1,11 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}New {{typeModule}}{% endblock %}
+
+{% block body %}
+    <h1>Create new {{typeModule}}</h1>
+
+    {{ include('admin_crud/_form.html.twig') }}
+
+    <a href="{{ path('app_admin_crud') }}">Back</a>
+{% endblock %}

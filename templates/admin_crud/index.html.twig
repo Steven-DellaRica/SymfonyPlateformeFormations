@@ -1,0 +1,18 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}AdminCRUD HomePage{% endblock %}
+
+{% block body %}
+    <h1>AdminCRUD HomePage</h1>
+
+    <h3>Avec quelle entité voulez vous intéragir ?</h3>
+
+    <pre>
+        {{ dump(cours) }}
+    </pre>
+
+    <a href="{{path('app_admin_crud_category', {'category' : 'users'})}}">Utilisateurs</a>
+    <a href="{{path('app_admin_crud_category', {'category' : 'langages'})}}">Langages</a>
+    <a href="{{path('app_admin_crud_category', {'category' : 'cours'})}}">Cours</a>
+
+{% endblock %}

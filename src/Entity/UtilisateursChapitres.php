@@ -23,7 +23,7 @@ class UtilisateursChapitres
     private ?int $utilisateur_chapitre_termine = null;
 
     #[ORM\ManyToOne]
-    private ?user $utilisateur = null;
+    private ?User $utilisateur = null;
 
     #[ORM\ManyToMany(targetEntity: chapitres::class, inversedBy: 'utilisateursChapitres')]
     private Collection $chapitre;
@@ -62,12 +62,12 @@ class UtilisateursChapitres
         return $this;
     }
 
-    public function getUtilisateur(): ?user
+    public function getUtilisateur(): ?User
     {
         return $this->utilisateur;
     }
 
-    public function setUtilisateur(?user $utilisateur): static
+    public function setUtilisateur(?User $utilisateur): static
     {
         $this->utilisateur = $utilisateur;
 

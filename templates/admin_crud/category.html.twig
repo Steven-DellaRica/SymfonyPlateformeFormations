@@ -1,0 +1,104 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}AdminCRUD index
+{% endblock %}
+{% block body %}			
+
+	{% set thead = "" %}
+	{% set tbody = "" %}
+
+	{{ dump(objects) }}
+	
+	{% if typeModule == "users" %}
+		{% set thead = thead ~ '
+			<th>ID</th>
+			<th>Email</th>
+			<th>Nom</th>
+			<th>Prenom</th>
+			'
+		%}
+		{% for object in objects %}
+
+			{% set tbody = tbody ~ '<tr>
+				<td>' ~ object.id ~ '</td>
+				<td>' ~ object.email ~ '</td>
+				<td>' ~ object.utilisateurnom ~ '</td>
+				<td>' ~ object.utilisateurprenom ~ '</td>
+			</tr>'
+			%}
+		{% else %}
+			<tr>
+				<td colspan="2">no records found</td>
+			</tr>
+		{% endfor %}
+	{% elseif typeModule == "langages" %}
+		{% set thead = thead ~ '
+			<th>ID</th>
+			<th>Nom</th>
+			'
+		%}
+		{% for object in objects %}
+
+			{% set tbody = tbody ~ '<tr>
+				<td>' ~ object.id ~ '</td>
+				<td>' ~ object.langagelibelle ~ '</td>
+				
+			</tr>'
+			%}
+		{% else %}
+			<tr>
+				<td colspan="2">no records found</td>
+			</tr>
+		{% endfor %}
+	{% elseif typeModule == "cours" %}
+		{% set thead = thead ~ '
+			<th>ID</th>
+			<th>Titre</th>
+			<th>Niveau</th>
+			<th>Temps estime</th>
+			<th>Image</th>
+			<th>Date</th>
+			<th>A jour</th>
+			<th>Synopsis</th>
+			<th>Langage lié</th>
+			'
+		%}
+		{% for object in objects %}
+
+			{% set tbody = tbody ~ '<tr>
+				<td>' ~ object.id ~ '</td>
+				<td>' ~ object.courstitre ~ '</td>
+				<td>' ~ object.coursniveau ~ '</td>
+				<td>' ~ object.courstempsestime ~ '</td>
+				<td>' ~ object.coursimage ~ '</td>
+				<td>' ~ object.coursdate|date('d/m/Y') ~ '</td>
+				<td>' ~ object.courscree ~ '</td>
+				<td>' ~ object.courssynopsis ~ '</td>
+				<td>' ~ object.langage.id ~ '</td>
+				
+			</tr>'
+			%}
+		{% else %}
+			<tr>
+				<td colspan="2">no records found</td>
+			</tr>
+		{% endfor %}
+	{% else %}
+		No records found
+	{% endif %}
+
+
+	<table class="table">
+		<thead>
+			<tr>
+				{{ thead|raw }}</tr>
+		</thead>
+		<tbody>
+			{{ tbody|raw }}
+		</tbody>
+	</table>
+
+	<a href="{{ path('app_admin_crud_new', {'category': typeModule})}}">Create new</a>
+	<a href="{{ path('app_admin_crud') }}">Back</a>
+
+{% endblock %}

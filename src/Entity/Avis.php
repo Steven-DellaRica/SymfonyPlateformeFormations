@@ -20,7 +20,7 @@ class Avis
     private ?string $avis_commentaire = null;
 
     #[ORM\OneToOne(cascade: ['persist', 'remove'])]
-    private ?user $utilisateur = null;
+    private ?User $utilisateur = null;
 
     public function getId(): ?int
     {
@@ -51,12 +51,12 @@ class Avis
         return $this;
     }
 
-    public function getUtilisateur(): ?user
+    public function getUtilisateur(): ?User
     {
         return $this->utilisateur;
     }
 
-    public function setUtilisateurId(?user $utilisateur): static
+    public function setUtilisateurId(?User $utilisateur): static
     {
         $this->utilisateur = $utilisateur;
 
