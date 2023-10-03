@@ -26,7 +26,7 @@ class Chapitres
     private ?int $chapitre_position = null;
 
     #[ORM\ManyToOne(inversedBy: 'chapitres')]
-    private ?cours $cours = null;
+    private ?Cours $cours = null;
 
     #[ORM\ManyToMany(targetEntity: UtilisateursChapitres::class, mappedBy: 'chapitre')]
     private Collection $utilisateursChapitres;
@@ -77,12 +77,12 @@ class Chapitres
         return $this;
     }
 
-    public function getCours(): ?cours
+    public function getCours(): ?Cours
     {
         return $this->cours;
     }
 
-    public function setCours(?cours $cours): static
+    public function setCours(?Cours $cours): static
     {
         $this->cours = $cours;
 

@@ -10,7 +10,7 @@ use Symfony\Component\OptionsResolver\OptionsResolver;
 use Symfony\Component\Validator\Constraints\Length;
 use Symfony\Component\Validator\Constraints\NotBlank;
 
-class RegistrationFormType extends AbstractType
+class UserFormType extends AbstractType
 {
     public function buildForm(FormBuilderInterface $builder, array $options): void
     {
@@ -18,7 +18,7 @@ class RegistrationFormType extends AbstractType
             ->add('utilisateur_nom')
             ->add('utilisateur_prenom')
             ->add('email')
-            ->add('plainPassword', PasswordType::class, [
+            ->add('password', PasswordType::class, [
                 // instead of being set onto the object directly,
                 // this is read and encoded in the controller
                 'mapped' => false,
@@ -34,8 +34,7 @@ class RegistrationFormType extends AbstractType
                         'max' => 4096,
                     ]),
                 ],
-            ])
-            ;
+            ]);
     }
 
     public function configureOptions(OptionsResolver $resolver): void

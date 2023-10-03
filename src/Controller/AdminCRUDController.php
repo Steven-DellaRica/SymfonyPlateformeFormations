@@ -15,6 +15,7 @@ use App\Repository\LangagesRepository;
 use App\Repository\UserRepository;
 use Doctrine\ORM\EntityManagerInterface;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
+use Symfony\Component\PasswordHasher\Hasher\UserPasswordHasherInterface;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\Routing\Annotation\Route;
@@ -36,19 +37,19 @@ class AdminCRUDController extends AbstractController
     public function handleCategory(string $category, UserRepository $userRepository, LangagesRepository $langagesRepository, CoursRepository $coursRepository): Response
     {
         $arr = array("typeModule" => $category);
-        
+
         switch ($category) {
-            case "users":
+            case "user":
                 $arr['objects'] = $userRepository->findAll();
-                
+
                 break;
             case "cours":
                 $arr['objects'] = $coursRepository->findAll();
-                // dd($coursRepository->findAll());
+
                 break;
             case "langages":
                 $arr['objects'] = $langagesRepository->findAll();
-                
+
                 break;
         }
 
@@ -56,11 +57,11 @@ class AdminCRUDController extends AbstractController
     }
 
     #[Route('/{category}/new', name: 'app_admin_crud_new', methods: ['GET', 'POST'])]
-    public function new(Request $request, EntityManagerInterface $entityManager, string $category): Response
+    public function new(Request $request, EntityManagerInterface $entityManager, string $category, UserPasswordHasherInterface $userPasswordHasher): Response
     {
 
         switch ($category) {
-            case "users":
+            case "user":
                 $formType = new User();
                 $form = $this->createForm(RegistrationFormType::class, $formType);
                 break;
@@ -76,6 +77,14 @@ class AdminCRUDController extends AbstractController
         $form->handleRequest($request);
 
         if ($form->isSubmitted() && $form->isValid()) {
+            if ($category === "user") {
+                $formType->setPassword(
+                    $userPasswordHasher->hashPassword(
+                        $formType,
+                        $form->get('plainPassword')->getData()
+                    )
+                );
+            }
             $entityManager->persist($formType);
             $entityManager->flush();
 
@@ -89,13 +98,13 @@ class AdminCRUDController extends AbstractController
         ]);
     }
 
-    #[Route('/{category}/{element}', name: 'app_admin_crud_show', methods: ['GET'])]
-    public function show(array $element): Response
-    {
-        return $this->render('admin_crud/show.html.twig', [
-            'elements' => $element,
-        ]);
-    }
+    // #[Route('/{category}/{element}', name: 'app_admin_crud_show', methods: ['GET'])]
+    // public function show(array $element): Response
+    // {
+    //     return $this->render('admin_crud/show.html.twig', [
+    //         'elements' => $element,
+    //     ]);
+    // }
 
     #[Route('/{id}/edit', name: 'app_admin_c_r_u_d_edit', methods: ['GET', 'POST'])]
     public function edit(Request $request, AdminCRUD $adminCRUD, EntityManagerInterface $entityManager): Response
@@ -115,14 +124,28 @@ class AdminCRUDController extends AbstractController
         ]);
     }
 
-    #[Route('/{id}', name: 'app_admin_c_r_u_d_delete', methods: ['POST'])]
-    public function delete(Request $request, AdminCRUD $adminCRUD, EntityManagerInterface $entityManager): Response
+    #[Route('/{category}/{id}/delete', name: 'app_admin_crud_delete', methods: ['POST'])]
+    public function delete(Request $request, string $category, int $id, EntityManagerInterface $entityManager): Response
     {
-        if ($this->isCsrfTokenValid('delete' . $adminCRUD->getId(), $request->request->get('_token'))) {
-            $entityManager->remove($adminCRUD);
+        switch ($category) {
+            case "user":
+                $obj = $entityManager->getRepository(User::class)->find($id);
+                break;
+
+            case "cours":
+                $obj = $entityManager->getRepository(Cours::class)->find($id);
+                break;
+
+            case "langages":
+                $obj = $entityManager->getRepository(Langages::class)->find($id);
+                break;
+        }
+
+        if ($this->isCsrfTokenValid('delete' . $id, $request->request->get('_token'))) {
+            $entityManager->remove($obj);
             $entityManager->flush();
         }
 
-        return $this->redirectToRoute('app_admin_c_r_u_d_index', [], Response::HTTP_SEE_OTHER);
+        return $this->redirectToRoute('app_admin_crud', [], Response::HTTP_SEE_OTHER);
     }
 }
