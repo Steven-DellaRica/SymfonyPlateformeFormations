@@ -25,7 +25,7 @@ class Cours
     #[ORM\Column]
     private ?int $cours_temps_estime = null;
 
-    #[ORM\Column(length: 255)]
+    #[ORM\Column(length: 255, nullable: true)]
     private ?string $cours_image = null;
 
     #[ORM\Column(type: Types::DATE_MUTABLE)]
@@ -37,12 +37,12 @@ class Cours
     #[ORM\Column(length: 100)]
     private ?string $cours_synopsis = null;
 
-    #[ORM\ManyToOne(inversedBy: 'cours')]
-    #[ORM\JoinColumn(nullable: false)]
-    private ?langages $langage = null;
-
     #[ORM\OneToMany(mappedBy: 'cours', targetEntity: Chapitres::class)]
     private Collection $chapitres;
+
+    #[ORM\ManyToOne(inversedBy: 'cours')]
+    #[ORM\JoinColumn(nullable: false)]
+    private ?Langages $langage = null;
 
     public function __construct()
     {
@@ -138,18 +138,6 @@ class Cours
         return $this;
     }
 
-    public function getLangage(): ?langages
-    {
-        return $this->langage;
-    }
-
-    public function setLangage(?langages $langage): static
-    {
-        $this->langage = $langage;
-
-        return $this;
-    }
-
     /**
      * @return Collection<int, Chapitres>
      */
@@ -176,6 +164,18 @@ class Cours
                 $chapitre->setCours(null);
             }
         }
+
+        return $this;
+    }
+
+    public function getLangage(): ?Langages
+    {
+        return $this->langage;
+    }
+
+    public function setLangage(?Langages $langage): static
+    {
+        $this->langage = $langage;
 
         return $this;
     }
